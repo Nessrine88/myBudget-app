@@ -14,5 +14,5 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   # Defines the root path route ("/")
-  root "shops#index"
+  root to: 'devise/registrations#new'
 end
