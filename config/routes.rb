@@ -1,12 +1,7 @@
 Rails.application.routes.draw do
+  resources :groups
   devise_for :users
-  get 'cards/show'
-  get 'shops/index'
-  get 'shops/show'
-  resources :products
-  resources :shops, only:[:index, :show] 
-  resources :order_items
-  resource :cards, only: [:show]
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -14,5 +9,5 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   # Defines the root path route ("/")
-  root to: 'shops#index'
+  root "groups#index"
 end
