@@ -15,6 +15,7 @@ class EntitiesTest < ApplicationSystemTestCase
     click_on "New entity"
 
     fill_in "Amount", with: @entity.amount
+    fill_in "Group", with: @entity.group_id
     fill_in "Name", with: @entity.name
     fill_in "User", with: @entity.user_id
     click_on "Create Entity"
@@ -28,6 +29,7 @@ class EntitiesTest < ApplicationSystemTestCase
     click_on "Edit this entity", match: :first
 
     fill_in "Amount", with: @entity.amount
+    fill_in "Group", with: @entity.group_id
     fill_in "Name", with: @entity.name
     fill_in "User", with: @entity.user_id
     click_on "Update Entity"

@@ -1,14 +1,23 @@
-<p style="color: green"><%= notice %></p>
 
-<h1>Entities</h1>
+<div class="container mt-4">
+  <h2>Entities in <%= @group.name %></h2>
 
-<div id="entities">
-  <% @entities.each do |entity| %>
-    <%= render entity %>
-    <p>
-      <%= link_to "Show this entity", entity %>
-    </p>
+  <% if @entities.any? %>
+    <ul class="list-group">
+      <% @entities.each do |entity| %>
+        <li class="list-group-item">
+          <%= link_to entity.name, group_entity_path(@group, entity) %>
+        </li>
+        <li> <%= entity.amount %></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>No entities in this group yet.</p>
   <% end %>
+
+  <%= link_to 'Back to Groups', groups_path %>
 </div>
 
-<%= link_to "New entity", new_entity_path %>
+<%= link_to "Add New", new_group_entity_path(@group) %>
+
+
