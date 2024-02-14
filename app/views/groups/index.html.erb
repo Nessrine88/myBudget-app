@@ -1,14 +1,31 @@
 <p style="color: green"><%= notice %></p>
-
-<h1>Groups</h1>
-
-<div id="groups">
+<div id="groups" class="container">
   <% @groups.each do |group| %>
     <%= render group %>
-    <p>
-      <%= link_to "Show this group", group %>
-    </p>
   <% end %>
 </div>
-
+<style>
+  .but {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    background-color: #5fb523;
+    padding: 10px; /* Add padding for better visibility */
+    text-align: center;
+    color: #fff;
+    text-decoration: none;
+  }
+  .but a{
+    color:white;
+  }
+  body {
+  background-color:#e7e7e7;
+}
+.container {
+  margin-bottom:70px;
+}
+</style>
+<div class="but">
 <%= link_to "New group", new_group_path %>
+</div>

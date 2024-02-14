@@ -1,23 +1,67 @@
+<style>
+  body {
+    background-color: #e7e7e7;
+  }
+
+  .list-group li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+  }
+
+  .but {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    background-color: #5fb523;
+    padding: 10px; /* Add padding for better visibility */
+    text-align: center;
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .but a {
+    color: white;
+  }
+
+  .list {
+    background-color: #fff;
+  }
+
+  .container {
+    padding-bottom: 50px;
+    height: 50%;
+    margin-bottom: 50px;
+  }
+</style>
 
 <div class="container mt-4">
-  <h2>Entities in <%= @group.name %></h2>
+  <h2>Transactions in <%= @group.name %></h2>
+  <%= link_to 'Back to Groups', groups_path %>
 
   <% if @entities.any? %>
     <ul class="list-group">
+      <li class="table-bordered p-4" align="center">Total amount: <%=@total_amount%></li>
+
       <% @entities.each do |entity| %>
-        <li class="list-group-item">
-          <%= link_to entity.name, group_entity_path(@group, entity) %>
-        </li>
-        <li> <%= entity.amount %></li>
+        <div class="d-flex justify-content-between mt-2 p-2 table-bordered list">
+          <div>
+            <li>
+              <%= entity.name %>
+              <li> <%= entity.created_at %></li>
+            </li>
+          </div>
+          <li> <%= entity.amount %>$</li>
+        </div>
       <% end %>
     </ul>
   <% else %>
     <p>No entities in this group yet.</p>
   <% end %>
 
-  <%= link_to 'Back to Groups', groups_path %>
+  <div class="but">
+    <%= link_to "Add New", new_group_entity_path(@group) %>
+  </div>
 </div>
-
-<%= link_to "Add New", new_group_entity_path(@group) %>
-
-

@@ -1,12 +1,12 @@
-<div id="<%= dom_id group %>">
+
+<div id="<%= dom_id group %>" class="table-bordered mb-2 p-2 bg-white">
   <p>
-    <strong>Name:</strong>
-    <%= group.name %>
+    <%= link_to group.name, group_entities_path(group) %>
   </p>
 
   <p>
-    <strong>Icon:</strong>
-    <%= group.icon %>
+    <%= link_to group_entities_path(group) do %>
+      <%= image_tag group.icon, alt: 'Group Icon', style: 'width: 50px; height: 50px;' %>
+    <% end %>
   </p>
-
 </div>
