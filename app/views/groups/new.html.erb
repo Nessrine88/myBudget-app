@@ -1,9 +1,50 @@
-<h1>New group</h1>
+<div class="container mt-4">
+  <%= form_with(model: @group) do |form| %>
+    <% if @group.errors.any? %>
+      <div class="alert alert-danger">
+        <h4><%= pluralize(@group.errors.count, "error") %> prohibited this group from being saved:</h4>
+        <ul>
+          <% @group.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
 
-<%= render "form", group: @group %>
+    <div class="mb-3">
+      <%= form.label :name, class: 'form-label' %>
+      <%= form.text_field :name, class: 'form-control', required: true %>
+    </div>
 
-<br>
+    <div class="mb-3">
+      <%= form.label :icon_url, class: 'form-label' %>
+      <%= form.text_field :icon, class: 'form-control', required: true %>
+    </div>
 
-<div>
-  <%= link_to "Back to groups", groups_path %>
+    <div class="but">
+      <%= form.submit "Create Group", class: 'btn btn-primary' %>
+    </div>
+  <% end %>
 </div>
+
+
+<style>
+.but {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  background-color: #5fb523;
+  padding: 2rem;
+  text-align: center;
+  color: #fff;
+  text-decoration: none;
+}
+
+.but input {
+  background-color: transparent;
+  color:white;
+  border: 1px solid white;
+  padding: 1rem 5rem;
+}
+</style>

@@ -1,7 +1,8 @@
 <style>
-h3 {
-  color: white;
-}
+  h3 {
+    color: white;
+  }
+
   .navBar {
     background-color: #3778c2;
     padding: 2rem;
@@ -11,28 +12,44 @@ h3 {
     background-color: transparent;
     color: #fff;
     border-color: #fff;
+    display: none; /* Hide the logout button initially */
+  }
+
+  .menu-icon {
+    cursor: pointer;
+    color: white;
+    font-size: 24px;
   }
 </style>
 
 <div class="navBar d-flex justify-content-between">
- 
   <div>
-  <h3>
-    <% if defined?(@group) && @group.present? %>
-    
-      <%= @group.name %> <br>
-    <% elsif request.path == groups_path %>
-      Categories
-    <% elsif defined?(@entity) && @entity.present? %>
-      <%= @entity.name %>
-    <% else %>
-      
+    <h3>
+      <% if defined?(@group) && @group.present? %>
+        <%= @group.name %> <br>
+      <% elsif request.path == groups_path %>
+        Categories
+      <% elsif defined?(@entity) && @entity.present? %>
+        <%= @entity.name %>
+      <% else %>
+      <% end %>
+    </h3>
+  </div>
+
+  <div>
+   
+    <span class="menu-icon" onclick="toggleLogoutButton()">☰</span>
+
+  
+    <% if user_signed_in? %>
+      <%= button_to("Log Out", destroy_user_session_path, method: :delete, class: 'logout', id: 'logoutButton') %>
     <% end %>
-    
-  </h3>
-</div>
-<% if user_signed_in? %>
-<%= button_to("Log Out", destroy_user_session_path, method: :delete, class: 'logout') %>
-<% end %>
+  </div>
 </div>
 
+<script>
+  function toggleLogoutButton() {
+    var logoutButton = document.getElementById('logoutButton');
+    logoutButton.style.display = (logoutButton.style.display === 'none' || logoutButton.style.display === '') ? 'inline-block' : 'none';
+  }
+</script>

@@ -1,25 +1,22 @@
 class GroupsController < ApplicationController
   before_action :set_group, only: %i[ show edit update destroy ]
   before_action :authenticate_user!
-  # GET /groups or /groups.json
+  before_action :calculate_group_totals, only: %i[index show]
+  
   def index
-    @groups = Group.all.page(params[:page])
+    @groups = Group.all.page(params[:page]).includes(:entities)
   end
 
-  # GET /groups/1 or /groups/1.json
   def show
   end
 
-  # GET /groups/new
   def new
     @group = current_user.groups.build
   end
 
-  # GET /groups/1/edit
   def edit
   end
 
-  # POST /groups or /groups.json
   def create
     @group = current_user.groups.build(group_params)
 
@@ -34,11 +31,10 @@ class GroupsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /groups/1 or /groups/1.json
   def update
     respond_to do |format|
       if @group.update(group_params)
-        format.html { redirect_to group_url(@group), notice: "Group was successfully updated." }
+        format.html { redirect_to group_url(@group) }
         format.json { render :show, status: :ok, location: @group }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -47,24 +43,29 @@ class GroupsController < ApplicationController
     end
   end
 
-  # DELETE /groups/1 or /groups/1.json
   def destroy
     @group.destroy!
 
     respond_to do |format|
-      format.html { redirect_to groups_url, notice: "Group was successfully destroyed." }
+      format.html { redirect_to groups_url}
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_group
       @group = Group.find(params[:id])
     end
-
-    # Only allow a list of trusted parameters through.
     def group_params
       params.require(:group).permit(:name, :icon)
+    end
+
+    def calculate_group_totals
+      @group_totals = {}
+      groups_with_entities = Group.includes(:entities)
+  
+      groups_with_entities.each do |group|
+        @group_totals[group.id] = group.entities.sum(:amount)
+      end
     end
 end

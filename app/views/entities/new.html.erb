@@ -1,8 +1,4 @@
-<!-- app/views/entities/new.html.erb -->
-
 <div class="container mt-4">
-  <h2>Add New Entity</h2>
-
   <%= form_with(model: [@group, @entity], local: true) do |form| %>
     <% if @entity.errors.any? %>
       <div class="alert alert-danger">
@@ -25,8 +21,29 @@
       <%= form.number_field :amount, class: 'form-control', required: true %>
     </div>
 
-    <div class="mb-3">
+    <div class="but">
       <%= form.submit "Create Entity", class: 'btn btn-primary' %>
     </div>
   <% end %>
 </div>
+
+<style>
+.but {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  background-color: #5fb523;
+  padding: 2rem;
+  text-align: center;
+  color: #fff;
+  text-decoration: none;
+}
+
+.but input {
+  background-color: transparent;
+  color:white;
+  border: 1px solid white;
+  padding: 1rem 5rem;
+}
+</style>

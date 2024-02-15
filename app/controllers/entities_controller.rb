@@ -41,11 +41,6 @@ class EntitiesController < ApplicationController
   # Only allow a list of trusted parameters through.
   def entity_params
     params.require(:entity).permit(:name, :amount, :group_id, :user_id)
-  end
-
-  def total_amount(entities)
-    total = entities.sum { |entity| entity.amount }
-    return total
-  end  
+  end 
   
 end
