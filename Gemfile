@@ -80,4 +80,3 @@ gem 'cancancan'
 
 
 gem 'kaminari'
-

@@ -9,7 +9,7 @@ RSpec.describe Entity, type: :model do
     @user = create(:user)
   end
 
-  it "is valid with valid attributes" do
+  it 'is valid with valid attributes' do
     group = build(:group, user: @user)
     expect(group).to be_valid
   end

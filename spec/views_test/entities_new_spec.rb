@@ -8,37 +8,37 @@ RSpec.configure do |config|
 end
 
 RSpec.feature 'Entities', type: :feature do
-  before do 
+  before do
     user = create(:user)
   end
-  scenario "user signs up and confirms email" do
+  scenario 'user signs up and confirms email' do
     visit new_user_registration_path
 
-    fill_in "Name", with: "John Doe"
-    fill_in "Email", with: "john@example.com"
-    fill_in "Password", with: "password"
-    fill_in "Password confirmation", with: "password"
+    fill_in 'Name', with: 'John Doe'
+    fill_in 'Email', with: 'john@example.com'
+    fill_in 'Password', with: 'password'
+    fill_in 'Password confirmation', with: 'password'
 
-    click_button "Sign up"
+    click_button 'Sign up'
 
     confirmation_email = ActionMailer::Base.deliveries.last
-    confirmation_link = confirmation_email.body.match(/confirmation_token=(.+)\"/)[1]
+    confirmation_link = confirmation_email.body.match(/confirmation_token=(.+)"/)[1]
 
     visit confirmation_link
 
-    expect(page).to have_content("Your email address has been successfully confirmed.")
-    expect(page).to have_content("Welcome! You have signed up successfully.")
+    expect(page).to have_content('Your email address has been successfully confirmed.')
+    expect(page).to have_content('Welcome! You have signed up successfully.')
   end
 
-  scenario "user logs in successfully" do
+  scenario 'user logs in successfully' do
     visit new_user_session_path
 
-    fill_in "Email", with: user.email
-    fill_in "Password", with: user.password
+    fill_in 'Email', with: user.email
+    fill_in 'Password', with: user.password
 
-    click_button "Log in"
+    click_button 'Log in'
 
-    expect(page).to have_content("Signed in successfully.")
+    expect(page).to have_content('Signed in successfully.')
     # Add any other expectations for a successful login
   end
   scenario 'User views entities in a group' do
@@ -47,8 +47,8 @@ RSpec.feature 'Entities', type: :feature do
     login_as(user, scope: :user)
 
     # Create a group and entities associated with the user
-    group = create(:group, user: user)
-    entities = create_list(:entity, 3, group: group, user: user)
+    group = create(:group, user:)
+    entities = create_list(:entity, 3, group:, user:)
 
     # Visit the entities page
     visit group_entities_path(group)

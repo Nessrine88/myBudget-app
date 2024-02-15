@@ -1,4 +1,8 @@
 <style>
+body {
+  padding: 0;
+  margin: 0;
+}
   h3 {
     color: white;
   }
@@ -21,7 +25,7 @@
     font-size: 24px;
   }
 </style>
-
+<% if user_signed_in? %>
 <div class="navBar d-flex justify-content-between">
   <div>
     <h3>
@@ -41,7 +45,7 @@
     <span class="menu-icon" onclick="toggleLogoutButton()">☰</span>
 
   
-    <% if user_signed_in? %>
+    
       <%= button_to("Log Out", destroy_user_session_path, method: :delete, class: 'logout', id: 'logoutButton') %>
     <% end %>
   </div>

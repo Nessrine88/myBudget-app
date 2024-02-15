@@ -1,7 +1,7 @@
 class EntitiesController < ApplicationController
   before_action :set_group, only: %i[show index new create destroy]
   before_action :authenticate_user!
-  
+
   def index
     @entities = @group.entities.order(created_at: :desc).page(params[:page])
     @total_amount = total_amount(@entities)
@@ -9,14 +9,14 @@ class EntitiesController < ApplicationController
 
   def show
     @entity = Entity.find(params[:id])
-  end 
-
-  def new 
-    @entity = @group.entities.build
-    @entity.user_id = current_user.id 
   end
 
-  def create 
+  def new
+    @entity = @group.entities.build
+    @entity.user_id = current_user.id
+  end
+
+  def create
     @entity = @group.entities.build(entity_params)
     @entity.user_id = current_user.id
     if @entity.save
@@ -34,13 +34,12 @@ class EntitiesController < ApplicationController
 
   private
 
-  def set_group    
+  def set_group
     @group = Group.find(params[:group_id])
   end
 
   # Only allow a list of trusted parameters through.
   def entity_params
     params.require(:entity).permit(:name, :amount, :group_id, :user_id)
-  end 
-  
+  end
 end
