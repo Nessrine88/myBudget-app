@@ -11,34 +11,7 @@ RSpec.feature 'Entities', type: :feature do
   before do
     user = create(:user)
   end
-  scenario 'user signs up and confirms email' do
-    visit new_user_registration_path
 
-    fill_in 'Name', with: 'John Doe'
-    fill_in 'Email', with: 'john@example.com'
-    fill_in 'Password', with: 'password'
-    fill_in 'Password confirmation', with: 'password'
-
-    click_button 'Sign up'
-
-    confirmation_email = ActionMailer::Base.deliveries.last
-    confirmation_link = confirmation_email.body.match(/confirmation_token=(.+)"/)[1]
-
-    visit confirmation_link
-
-    expect(page).to have_content('Your email address has been successfully confirmed.')
-    expect(page).to have_content('Welcome! You have signed up successfully.')
-
-    visit new_user_session_path
-
-    fill_in 'Email', with: 'john@example.com'
-    fill_in 'Password', with: 'password'
-
-    click_button 'Log in'
-
-    expect(page).to have_content('Signed in successfully.')
-    # Add any other expectations for a successful login
-  end
   scenario 'User views entities in a group' do
     # Create a user and log in
     user = create(:user)

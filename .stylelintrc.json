@@ -26,7 +26,9 @@
         ]
       }
     ],
-    "csstree/validator": true
+    "csstree/validator": {
+      "syntaxExtensions": ["sass", "less"]
+    }
   },
   "ignoreFiles": ["build/**", "dist/**", "**/reset*.css", "**/bootstrap*.css"]
 }

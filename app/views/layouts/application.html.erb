@@ -7,11 +7,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+
   </head>
 
   <body>
   <%= render '/layouts/navbar'%>
-  <p class="notice fixed-top" style="color: #555; font-style: italic; text-align: center;"><%= alert %></p>
+  <p class="notice fixed-top" style="color: #5fb523; font-style: italic; text-align: center;"><%= alert %></p>
 
     <%= yield %>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
