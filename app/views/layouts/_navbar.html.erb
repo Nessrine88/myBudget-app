@@ -1,14 +1,15 @@
 <style>
+h3 {
+  color: white;
+}
   .navBar {
     background-color: #3778c2;
-    padding: 4rem;
+    padding: 2rem;
   }
 
   .navBar button {
     background-color: transparent;
     color: #fff;
-    font-size: 24px;
-    font-weight: bold; /* Corrected misspelling of "weight" */
     border-color: #fff;
   }
 </style>
@@ -16,8 +17,9 @@
 <div class="navBar d-flex justify-content-between">
  
   <div>
-  <h1>
+  <h3>
     <% if defined?(@group) && @group.present? %>
+    
       <%= @group.name %> <br>
     <% elsif request.path == groups_path %>
       Categories
@@ -26,7 +28,8 @@
     <% else %>
       
     <% end %>
-  </h1>
+    
+  </h3>
 </div>
 <% if user_signed_in? %>
 <%= button_to("Log Out", destroy_user_session_path, method: :delete, class: 'logout') %>

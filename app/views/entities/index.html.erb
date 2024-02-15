@@ -1,3 +1,4 @@
+
 <style>
   body {
     background-color: #e7e7e7;
@@ -14,9 +15,9 @@
     position: fixed;
     bottom: 0;
     left: 0;
-    width: 100vw;
+    width: 100%; /* Updated width to 100% */
     background-color: #5fb523;
-    padding: 10px; /* Add padding for better visibility */
+    padding: 2rem;
     text-align: center;
     color: #fff;
     text-decoration: none;
@@ -29,16 +30,9 @@
   .list {
     background-color: #fff;
   }
-
-  .container {
-    padding-bottom: 50px;
-    height: 50%;
-    margin-bottom: 50px;
-  }
 </style>
 
-<div class="container mt-4">
-  <h2>Transactions in <%= @group.name %></h2>
+<div class="p-2 mt-4">
   <%= link_to 'Back to Groups', groups_path %>
 
   <% if @entities.any? %>
