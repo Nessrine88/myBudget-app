@@ -3,7 +3,7 @@ class EntitiesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @entities = @group.entities.order(created_at: :desc).page(params[:page])
+    @entities = @group.entities.includes(:user).order(created_at: :desc).page(params[:page])
     @total_amount = total_amount(@entities)
   end
 
@@ -38,7 +38,6 @@ class EntitiesController < ApplicationController
     @group = Group.find(params[:group_id])
   end
 
-  # Only allow a list of trusted parameters through.
   def entity_params
     params.require(:entity).permit(:name, :amount, :group_id, :user_id)
   end

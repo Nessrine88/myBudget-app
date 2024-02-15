@@ -28,13 +28,11 @@ RSpec.feature 'Entities', type: :feature do
 
     expect(page).to have_content('Your email address has been successfully confirmed.')
     expect(page).to have_content('Welcome! You have signed up successfully.')
-  end
 
-  scenario 'user logs in successfully' do
     visit new_user_session_path
 
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
+    fill_in 'Email', with: 'john@example.com'
+    fill_in 'Password', with: 'password'
 
     click_button 'Log in'
 
