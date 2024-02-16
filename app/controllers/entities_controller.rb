@@ -3,12 +3,24 @@ class EntitiesController < ApplicationController
   before_action :authenticate_user!
 
   def index
+<<<<<<< HEAD
     @entities = @group.entities.includes(:user).order(created_at: :desc).page(params[:page])
+=======
+    @entities = @group.entities.order(created_at: :desc)
+>>>>>>> 22234b1 (add style)
     @total_amount = total_amount(@entities)
   end
 
   def show
     @entity = Entity.find(params[:id])
+<<<<<<< HEAD
+=======
+  end 
+
+  def new 
+    @entity = @group.entities.build
+    @entity.user_id = current_user.id 
+>>>>>>> 22234b1 (add style)
   end
 
   def new
@@ -41,4 +53,10 @@ class EntitiesController < ApplicationController
   def entity_params
     params.require(:entity).permit(:name, :amount, :group_id, :user_id)
   end
+
+  def total_amount(entities)
+    total = entities.sum { |entity| entity.amount }
+    return total
+  end  
+  
 end

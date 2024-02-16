@@ -1,15 +1,29 @@
+<<<<<<< HEAD
 <div id="<%= dom_id group %>" class=" d-flex align-items-center table-bordered mb-2 bg-white">
 <div>
   <p class="pr-2 pl-2">
     <%= link_to group_entities_path(group) do %>
       <%= image_tag group.icon, alt: 'Group Icon', style: 'width: 50px; height: 50px;' %>
     <% end %>
+=======
+
+<div id="<%= dom_id group %>" class="table-bordered mb-2 p-2 bg-white">
+  <p>
+    <%= link_to group.name, group_entities_path(group) %>
+>>>>>>> 22234b1 (add style)
   </p>
   </div>
   <div>
   <p>
+<<<<<<< HEAD
   <%= link_to group.name, group_entities_path(group) %>
 </p>
+=======
+    <%= link_to group_entities_path(group) do %>
+      <%= image_tag group.icon, alt: 'Group Icon', style: 'width: 50px; height: 50px;' %>
+    <% end %>
+  </p>
+>>>>>>> 22234b1 (add style)
 </div>
 </div>
 

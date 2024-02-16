@@ -1,8 +1,53 @@
+<<<<<<< HEAD
 <div class="p-2 mt-4">
   
 <%= link_to groups_path, class: "back-link" do %>
   <i class="fas fa-arrow-left"></i> Back to Categories
 <% end %>
+=======
+<style>
+  body {
+    background-color: #e7e7e7;
+  }
+
+  .list-group li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+  }
+
+  .but {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    background-color: #5fb523;
+    padding: 10px; /* Add padding for better visibility */
+    text-align: center;
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .but a {
+    color: white;
+  }
+
+  .list {
+    background-color: #fff;
+  }
+
+  .container {
+    padding-bottom: 50px;
+    height: 50%;
+    margin-bottom: 50px;
+  }
+</style>
+
+<div class="container mt-4">
+  <h2>Transactions in <%= @group.name %></h2>
+  <%= link_to 'Back to Groups', groups_path %>
+>>>>>>> 22234b1 (add style)
 
   <% if @entities.any? %>
     <ul class="list-group">

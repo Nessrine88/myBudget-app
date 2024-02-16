@@ -1,13 +1,42 @@
 <p style="color: green"><%= notice %></p>
+<<<<<<< HEAD
 <div class="pl-2">
 <%= paginate @groups %>
 </div>
 <div id="groups"class="p-2">
+=======
+<div id="groups" class="container">
+>>>>>>> 22234b1 (add style)
   <% @groups.each do |group| %>
     <%= render group %>
   <% end %>
 </div>
+<<<<<<< HEAD
 
+=======
+<style>
+  .but {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    background-color: #5fb523;
+    padding: 10px; /* Add padding for better visibility */
+    text-align: center;
+    color: #fff;
+    text-decoration: none;
+  }
+  .but a{
+    color:white;
+  }
+  body {
+  background-color:#e7e7e7;
+}
+.container {
+  margin-bottom:70px;
+}
+</style>
+>>>>>>> 22234b1 (add style)
 <div class="but">
 <%= link_to "New group", new_group_path %>
 </div>
