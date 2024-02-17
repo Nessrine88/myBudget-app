@@ -4,11 +4,17 @@ class EntitiesController < ApplicationController
 
   def index
     @entities = @group.entities.includes(:user).order(created_at: :desc).page(params[:page])
+
     @total_amount = total_amount(@entities)
   end
 
   def show
     @entity = Entity.find(params[:id])
+  end 
+
+  def new 
+    @entity = @group.entities.build
+    @entity.user_id = current_user.id 
   end
 
   def new
@@ -42,7 +48,11 @@ class EntitiesController < ApplicationController
   def entity_params
     params.require(:entity).permit(:name, :amount, :group_id, :user_id)
   end
+
   def total_amount(entities)
     entities.sum(&:amount)
   end
+
+
+
 end

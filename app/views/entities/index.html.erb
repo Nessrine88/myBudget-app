@@ -1,25 +1,28 @@
 <div class="p-2 mt-4">
+  
+<%= link_to groups_path, class: "back-link" do %>
+  <i class="fas fa-arrow-left"></i> Back to Categories
+<% end %>
+
   <% if @entities.any? %>
     <ul class="list-group">
-      <li class="table-bordered p-4 d-flex justify-content-between">
-        <p>Total amount:</p>
-        <p><%= @total_amount %>$</p>
-      </li>
+      <li class="table-bordered p-4" align="center"><strong>Total amount: <%=@total_amount%></strong> $</li>
 
       <% @entities.each do |entity| %>
-        <li class="d-flex justify-content-between mt-2 p-2 table-bordered list">
+        <div class="d-flex justify-content-between mt-2 p-2 table-bordered list">
           <div>
-            <span><%= entity.name %></span>
-            <span><%= entity.created_at.strftime('%B %d, %Y %H:%M:%S') %></span>
+            <li>
+              <%= entity.name %>
+              <li id="time"> <%= entity.created_at %></li>
+            </li>
           </div>
-          <span><%= entity.amount %>$</span>
-        </li>
+          <li> <%= entity.amount %>$</li>
+        </div>
       <% end %>
     </ul>
   <% else %>
-    <p style="color: #555; font-size: 2em; font-style: italic; text-align: center; margin-top: 5rem;">
-      No entities in this group yet.
-    </p>
+  <p style="color: #555;font-size:2em; font-style: italic; text-align: center; margin-top:5rem;">No entities in this group yet.</p>
+
   <% end %>
 
   <div class="but">
