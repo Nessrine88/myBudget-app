@@ -17,15 +17,16 @@ class EntitiesController < ApplicationController
   end
 
   def create
+    @group = Group.find(params[:entity][:group_id])
     @entity = @group.entities.build(entity_params)
     @entity.user_id = current_user.id
+  
     if @entity.save
       redirect_to group_entities_path(@group), notice: 'Entity was successfully created.'
     else
       render :new
     end
   end
-
   def destroy
     @entity = Entity.find(params[:id])
     @entity.destroy
@@ -40,5 +41,8 @@ class EntitiesController < ApplicationController
 
   def entity_params
     params.require(:entity).permit(:name, :amount, :group_id, :user_id)
+  end
+  def total_amount(entities)
+    entities.sum(&:amount)
   end
 end

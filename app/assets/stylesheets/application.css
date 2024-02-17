@@ -1,4 +1,15 @@
+@font-face {
+  font-family: 'proxima';
+  src: url('<%= asset_path('proxima.otf') %>') format('opentype');
+}
 
+body {
+  font-family: 'proxima', sans-serif;
+}
+
+a {
+  color: #434b54;
+}
 .but {
   position: fixed;
   bottom: 0;
@@ -21,25 +32,6 @@
   margin-bottom: 50px;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-.fade-in {
-  animation: fadeIn 5s ease-in-out;
-}
-
-body {
-  background-color: #e7e7e7;
-  font-family: 'Proxima Vera Bold', sans-serif;
-}
-
 .list-group li {
   list-style: none;
   margin: 0;
@@ -56,39 +48,6 @@ body {
   color: white;
   border: 1px solid white;
   padding: 1rem 5rem;
-}
-
-.home {
-  position: relative;
-  font-size: 4em;
-  color: #0e3742;
-  text-transform: uppercase;
-  width: 100%;
-  text-align: center;
-  -webkit-box-reflect: below 1px linear-gradient(transparent, #0004);
-  line-height: 0.7em;
-  outline: none;
-  animation: animate 5s linear infinite;
-}
-
-@keyframes animate {
-  0%,
-  18%,
-  20%,
-  50.1%,
-  60%,
-  65.1%,
-  80%,
-  90.1%,
-  92% {
-    color: #fff;
-    text-shadow:
-      0 0 10px #03bcf4
-      0 0 20px #03bcf4
-      0 0 40px #03bcf4
-      0 0 80px #03bcf4
-      0 0 160px #03bcf4;
-  }
 }
 
 h3 {
@@ -111,4 +70,10 @@ h3 {
   cursor: pointer;
   color: white;
   font-size: 24px;
+}
+
+#centered {
+text-align: center;
+width: 100%;
+margin: auto;
 }
