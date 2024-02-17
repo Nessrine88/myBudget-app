@@ -9,8 +9,8 @@ class GroupsController < ApplicationController
   def show; end
 
   def new
-    @group = current_user.groups.build
-  end
+    @group = Group.new(user_id: current_user.id)
+  end  
 
   def edit; end
 
