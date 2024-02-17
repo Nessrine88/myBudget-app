@@ -1,7 +1,6 @@
-<<<<<<< HEAD
 @font-face {
   font-family: 'proxima';
-  src: url('<%= asset_path('proxima.otf') %>') format('opentype');
+  src: url('/assets/proxima');
 }
 
 body {
@@ -11,6 +10,7 @@ body {
 a {
   color: #434b54;
 }
+
 .but {
   position: fixed;
   bottom: 0;
@@ -27,10 +27,6 @@ a {
   color: white;
   border: 1px solid white;
   padding: 1rem 5rem;
-}
-
-.p-2 {
-  margin-bottom: 50px;
 }
 
 .list-group li {
@@ -53,6 +49,8 @@ a {
 
 h3 {
   color: white;
+  font-size: 36px;
+  font-family: 'proxima', sans-serif;
 }
 
 .navBar {
@@ -64,7 +62,7 @@ h3 {
   background-color: transparent;
   color: #fff;
   border-color: #fff;
-  display: none; /* Hide the logout button initially */
+  display: none;
 }
 
 .menu-icon {
@@ -72,22 +70,19 @@ h3 {
   color: white;
   font-size: 24px;
 }
-<<<<<<< HEAD
 
 #centered {
-text-align: center;
-width: 100%;
-margin: auto;
+  text-align: center;
+  width: 100%;
+  margin: auto;
 }
-=======
-=======
-body {
-    background-color: #434b54;
-    list-style: none;
-    padding: 5rem;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    
+
+#time {
+  color: #434b54;
+  font-style: italic;
+  font-size: 16px;
 }
-  
+
+.nameE {
+  font-size: 24px;
+}
